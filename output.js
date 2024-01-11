@@ -5,10 +5,10 @@ const y = '2';
 
 console.log(x, y);
 
-//%s format variable to string
-//%d
-//%i
-//%o
+// %s format variable to string
+// %d
+// %i
+// %o
 // console.log('I am %s and my age is %d', 'Vah', 34);
 // console.clear();
 // console.count('Vah 0');
