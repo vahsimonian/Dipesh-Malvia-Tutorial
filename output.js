@@ -1,4 +1,4 @@
-const { chownSync } = require('fs');
+// const { default: chalk } = require('chalk');
 
 const x = '1';
 const y = '2';
@@ -23,16 +23,32 @@ console.log(x, y);
 
 // function2();
 
-const sum = () => console.log(`The sum of 2 and 3 is: ${2 + 3}`);
-const multiply = () =>
-  console.log(`The multiplication of 2 and 3 is: ${2 + 3}`);
+// const sum = () => console.log(`The sum of 2 and 3 is: ${2 + 3}`);
+// const multiply = () =>
+//   console.log(`The multiplication of 2 and 3 is: ${2 + 3}`);
 
-const measureTime = () => {
-  console.time('sum()');
-  sum();
-  console.timeEnd('sum()');
-  console.time('multiply()');
-  multiply();
-  console.timeEnd('multiply()');
-};
-measureTime();
+// const measureTime = () => {
+//   console.time('sum()');
+//   sum();
+//   console.timeEnd('sum()');
+//   console.time('multiply()');
+//   multiply();
+//   console.timeEnd('multiply()');
+// };
+// measureTime();
+
+const ProgressBar = require('progress');
+
+const bar = new ProgressBar('downloading [:bar] :rate/bps :percent :etas', {
+  total: 20,
+});
+
+const timer = setInterval(() => {
+  bar.tick();
+  if (bar.complete) {
+    clearInterval(timer);
+  }
+}, 100);
+
+const chalk = require('chalk');
+console.log(chalk.blue('This is Node Vah js'));
