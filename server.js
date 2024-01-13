@@ -4,11 +4,27 @@ const http = require('http');
 const PORT = process.env.PORT || 5001;
 
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'application/json');
-  res.write(JSON.stringify({ message: 'Hello, Vah, from Dipesh course' }));
-  res.write(JSON.stringify({ message: 'Hello, Vah, from Dipesh course' }));
-  res.end();
+  switch (req.method) {
+    case 'GET':
+      getReq(req, res);
+      break;
+    case 'POST':
+      postReq(req, res);
+      break;
+    case 'PUT':
+      putReq(req, res);
+      break;
+    case 'DELETE':
+      deleteReq(req, res);
+      break;
+    default:
+      res.statusCode = 404;
+      res.setHeader('Content-Type', 'application/json');
+      res.write(
+        JSON.stringify({ title: 'Not found', message: 'Route not found' })
+      );
+      res.end();
+  }
 });
 
 server.listen(PORT, () => {
