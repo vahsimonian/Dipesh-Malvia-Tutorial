@@ -7,6 +7,7 @@ const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
   res.write(JSON.stringify({ message: 'Hello, Vah, from Dipesh course' }));
+  res.write(JSON.stringify({ message: 'Hello, Vah, from Dipesh course' }));
   res.end();
 });
 
