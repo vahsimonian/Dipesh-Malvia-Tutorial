@@ -1,5 +1,4 @@
 console.log('start operation');
-
 function sleep(miliseconds) {
   console.log('operation is running');
   setTimeout(() => {
