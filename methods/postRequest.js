@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
       res.end(
         JSON.stringify({
           title: 'Validation failed',
-          message: 'UUID is not valid',
+          message: 'Request body is not valid',
         })
       );
     }
