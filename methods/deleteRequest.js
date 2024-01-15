@@ -10,5 +10,14 @@ module.exports = (req, res) => {
         message: 'UUID is not valid',
       })
     );
+  } else if (baseUrl === '/api/movies/' && regexV4.test(id)) {
+    const index = req.movies.findIndex((movie) => {
+      return movie.id === id;
+    });
+    if (index === -1) {
+      res.statusCode = 404;
+      res.write({ title: 'Not found', message: 'Movie not found' });
+    }
+    res.end();
   }
 };
