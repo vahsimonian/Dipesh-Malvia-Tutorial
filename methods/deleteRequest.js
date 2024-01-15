@@ -19,5 +19,10 @@ module.exports = (req, res) => {
       res.write({ title: 'Not found', message: 'Movie not found' });
     }
     res.end();
+  } else {
+    req.movies.splice(index, 1);
+    writeToFile(req.movies);
+    res.writeHead(204, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(req.movies));
   }
 };
