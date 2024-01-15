@@ -1,7 +1,10 @@
 module.exports = (req, res) => {
   let baseUrl = req.url.substring(0, req.url.lastIndexOf('/') + 1);
   let id = req.url.split('/');
-  const regexV4 = new RegExp('//vecd//');
+  const regexV4 = new RegExp(
+    /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89ABab][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/
+  );
+  console.log(regexV4);
 
   if (req.url === '/api/movies') {
     res.statusCode = 200;
