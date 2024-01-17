@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
+const logger = require('morgan');
+const multer = require('multer');
+const upload = multer({ dest: './public/uploads' });
 
 const app = express();
 
@@ -15,6 +18,8 @@ const loggerMiddleware = (req, res, next) => {
 };
 
 app.use(loggerMiddleware);
+
+app.use(logger('combine'));
 
 app.use('/api/users', router);
 
@@ -69,6 +74,23 @@ const errorHandler = (err, req, res, next) => {
       break;
   }
 };
+
+app.post(
+  '/upload',
+  upload.single('image'),
+  (req, res, next) => {
+    console.log(req.file, req.body);
+    res.send(req.file);
+  },
+  (err, req, res, next) => {
+    res.status(400).send({ err: err.message });
+  }
+);
+
+app.all('*', (req, res) => {
+  res.status(404);
+  throw new Error('Route not found');
+});
 
 app.use(errorHandler);
 
